@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
 --
--- Host: localhost    Database: all4sport
+-- Host: 127.0.0.1    Database: all4sport
 -- ------------------------------------------------------
 -- Server version	8.0.21
 
@@ -14,33 +14,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Table structure for table `a commander`
---
-
-DROP TABLE IF EXISTS `a commander`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `a commander` (
-  `fk_id_utilisateur` int NOT NULL,
-  `fk_historique_commande` int NOT NULL,
-  PRIMARY KEY (`fk_id_utilisateur`,`fk_historique_commande`),
-  KEY `fk_id_utilisateur` (`fk_id_utilisateur`) /*!80000 INVISIBLE */,
-  KEY `fk_historique_commande` (`fk_historique_commande`),
-  CONSTRAINT `fk_historique_commande` FOREIGN KEY (`fk_historique_commande`) REFERENCES `historique_commande` (`id_Historique_commande`),
-  CONSTRAINT `fk_id_utilisateur` FOREIGN KEY (`fk_id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `a commander`
---
-
-LOCK TABLES `a commander` WRITE;
-/*!40000 ALTER TABLE `a commander` DISABLE KEYS */;
-/*!40000 ALTER TABLE `a commander` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `appartient`
@@ -196,36 +169,6 @@ INSERT INTO `genre` VALUES (1,'Masculin'),(2,'feminin');
 UNLOCK TABLES;
 
 --
--- Table structure for table `historique_commande`
---
-
-DROP TABLE IF EXISTS `historique_commande`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `historique_commande` (
-  `id_Historique_commande` int NOT NULL AUTO_INCREMENT,
-  `date_commande` datetime NOT NULL,
-  `quantité_commande` int NOT NULL,
-  `adresse_livraison` varchar(255) NOT NULL,
-  `lieu_expedition` varchar(255) NOT NULL,
-  `etat_commande` varchar(255) NOT NULL,
-  `sous_total` double NOT NULL,
-  `total_commande` double NOT NULL,
-  `prix_unitaire` double NOT NULL,
-  PRIMARY KEY (`id_Historique_commande`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `historique_commande`
---
-
-LOCK TABLES `historique_commande` WRITE;
-/*!40000 ALTER TABLE `historique_commande` DISABLE KEYS */;
-/*!40000 ALTER TABLE `historique_commande` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `magasin`
 --
 
@@ -271,33 +214,6 @@ LOCK TABLES `marque` WRITE;
 /*!40000 ALTER TABLE `marque` DISABLE KEYS */;
 INSERT INTO `marque` VALUES (1,'Nike'),(2,'adidas'),(3,'puma');
 /*!40000 ALTER TABLE `marque` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `peut_etre_acheter`
---
-
-DROP TABLE IF EXISTS `peut_etre_acheter`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `peut_etre_acheter` (
-  `fk_id_utilisateur` int NOT NULL,
-  `fk_reference` varchar(45) NOT NULL,
-  PRIMARY KEY (`fk_id_utilisateur`,`fk_reference`),
-  KEY `fk_id_utilisateur _idx` (`fk_id_utilisateur`),
-  KEY `fk_reference_7` (`fk_reference`),
-  CONSTRAINT `fk_id_utilisateur_2` FOREIGN KEY (`fk_id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`),
-  CONSTRAINT `fk_reference_7` FOREIGN KEY (`fk_reference`) REFERENCES `produit` (`reference`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `peut_etre_acheter`
---
-
-LOCK TABLES `peut_etre_acheter` WRITE;
-/*!40000 ALTER TABLE `peut_etre_acheter` DISABLE KEYS */;
-/*!40000 ALTER TABLE `peut_etre_acheter` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -393,33 +309,6 @@ LOCK TABLES `stock` WRITE;
 INSERT INTO `stock` VALUES ('122334',2,34),('123456',1,43),('133444',1,12),('133445',3,34),('133447',3,65),('133448',2,21),('133449',3,13);
 /*!40000 ALTER TABLE `stock` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `utilisateur`
---
-
-DROP TABLE IF EXISTS `utilisateur`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `utilisateur` (
-  `id_utilisateur` int NOT NULL AUTO_INCREMENT,
-  `Nom` varchar(45) NOT NULL,
-  `prenom` varchar(45) NOT NULL,
-  `MDP` varchar(45) NOT NULL,
-  `login` varchar(45) NOT NULL,
-  PRIMARY KEY (`id_utilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `utilisateur`
---
-
-LOCK TABLES `utilisateur` WRITE;
-/*!40000 ALTER TABLE `utilisateur` DISABLE KEYS */;
-INSERT INTO `utilisateur` VALUES (1,'nom_admin','prenom_admin','root','0000');
-/*!40000 ALTER TABLE `utilisateur` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -430,4 +319,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-24 11:53:48
+-- Dump completed on 2022-03-31  9:54:32
