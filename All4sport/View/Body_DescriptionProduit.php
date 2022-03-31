@@ -28,11 +28,11 @@ echo "<a  href=http://localhost/All4Sport/Controller/sport_Controller.php?CA_Lib
 <!------------------------------------------------------------------------------------------------------------------------->
 <?php
 	foreach ($categorie as $categorie) {
-		$strref = array_values($cateref)[$uwu][0];
-		$strrefphoto = array_values($cateref)[$uwu][2];
+		$strref = array_values($cateref)[$boucle][0];
+		$strrefphoto = array_values($cateref)[$boucle][2];
 		if (isset($_GET['GE_libelle'])) {
-		$strref1 = array_values($cateref)[$uwu][0];
-		$strrefphoto = array_values($cateref)[$uwu][3];
+		$strref1 = array_values($cateref)[$boucle][0];
+		$strrefphoto = array_values($cateref)[$boucle][3];
 		}
 ?>
 <div class="image_DescriptionProduit">
@@ -51,7 +51,7 @@ echo "<a  href=http://localhost/All4Sport/Controller/sport_Controller.php?CA_Lib
 	echo "<p><em><a href=pageproduit_Controller.php?reference=$strref >"?><img id="image2_DescriptionProduit" src="<?php echo $strrefphoto ?>"><?php "</a></em></p>
 	";
 }
-$uwu = $uwu + 1; 
+$boucle = $boucle + 1; 
 }
 ?>
 </div>
