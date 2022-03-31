@@ -5,7 +5,7 @@ Class Bdd {
 
     function __construct(){
         try{
-        $this->bdd = new PDO("mysql:dbname=all4sport;host=127.0.0.1", "root","2010Thibaut");
+        $this->bdd = new PDO("mysql:dbname=all4sport;host=127.0.0.1", "root","Simon59300sql");
         } catch(PDOException $e){
         }
     }

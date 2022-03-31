@@ -29,6 +29,6 @@ $cateLibelle = $_GET['CA_Libelle'];
 		$cateref = $bdd->getProduitByCategory($cateLibelle);
 	}
 	//$strcat = array_values($categorie)[0][1];
-	$uwu = 0;
+	$boucle = 0;
 
 include "../View/index/DescriptionProduit_view.php";
