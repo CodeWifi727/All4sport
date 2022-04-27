@@ -10,7 +10,7 @@ $bdd = new Bdd();
 // Appel la vue
 
 try{
-    $bdd = new PDO("mysql:dbname=all4sport;host=127.0.0.1", "root","2010thibaut");
+    $bdd = new PDO("mysql:dbname=all4sport;host=127.0.0.1", "root","Simon59300sql");
     } catch(PDOException $e){
     }
 
